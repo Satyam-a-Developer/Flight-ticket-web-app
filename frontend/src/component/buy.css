@@ -1,0 +1,25 @@
+
+canvas{
+    min-height: 60vh;
+    min-width: 40vw;
+    scale: 1;
+}
+
+.Newslide{
+    height: 100vh;
+    background-color: aqua;
+}
+.spline{
+    /* margin-top:10%; */
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.details{
+    font-size: 40px;
+
+    margin-left: 7%;
+    display: flex;
+    /* align-items: center;  */
+    flex-direction: column;
+}
