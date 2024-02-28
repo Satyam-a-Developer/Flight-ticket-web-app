@@ -6,9 +6,9 @@ function Private() {
   const [destination, setdestination] = useState();
   const [time, settime] = useState(" ");
 
- localStorage.setItem("choose",choose);
- localStorage.setItem("choose",destination);
- localStorage.setItem("choose",time);
+  localStorage.setItem("choose", choose);
+  localStorage.setItem("choose", destination);
+  localStorage.setItem("choose", time);
 
   const country = (e) => {
     e.preventDefault();
@@ -23,8 +23,15 @@ function Private() {
     }
   };
   const flighttime = (e) => {
-    console.log(e.target.value);
-    e.preventDefault();
+    const inputDate = e.target.value;
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const inputYear = new Date(inputDate).getFullYear();
+    if (inputYear !== currentYear) {
+      alert("Error: Input date is not from the current year.");
+    } else {
+      alert("Input date is valid.");
+    }
     settime(e.target.value);
   };
   const destinationplace = (e) => {
@@ -36,13 +43,10 @@ function Private() {
   return (
     <div className="Private">
       <main>
-      
         <div className="Selector">
           <div className="Place">
             <h5>Choose</h5>
-           
 
-           
             <select
               id="country"
               name="country"
@@ -354,7 +358,7 @@ function Private() {
 
           <div className="Destination">
             <h5>Choose your destination</h5>
-    {/* <label for="country">Country</label><span ="color: red !important; display: inline; float: none;">*</span>       */}
+            {/* <label for="country">Country</label><span ="color: red !important; display: inline; float: none;">*</span>       */}
 
             <select
               id="country"
@@ -668,23 +672,16 @@ function Private() {
             <h5>Time</h5>
             <h2>
               <input type="date" onChange={flighttime} value={time} required />
-              <input type="submit" id="submit" onClick={handleClick}/>
-
+              <input type="submit" id="submit" onClick={handleClick} />
             </h2>
           </div>
         </div>
         <div className={className ? className : "hide"}>
           <h3>We found out the Flight as per your selection </h3>
           <h4>Successfully completed your order</h4>
-          <div className="choose">
-            From : {choose}
-          </div>
-          <div className="destination">
-            To : {destination}
-          </div>
-          <div className="time">
-           At : {time}
-          </div>
+          <div className="choose">From : {choose}</div>
+          <div className="destination">To : {destination}</div>
+          <div className="time">At : {time}</div>
         </div>
 
         <div className="Info">
